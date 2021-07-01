@@ -1,0 +1,20 @@
+
+GLÓRIA AO SOL:
+curl --request GET \
+  --url http://localhost:3003/gloriasol
+
+
+CÁLCULO DAS RAÍZES:
+
+curl --request POST \
+  --url http://localhost:3003/bhaskara \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"a": 1,
+	"b": 2,
+	"c": 1
+}'
+
+CLASSIFICACÃO DOS TRIÂNGULOS:
+curl --request DELETE \
+  --url http://localhost:3003/triangulo/10-8-10

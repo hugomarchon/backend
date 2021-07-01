@@ -1,0 +1,66 @@
+
+CRIAÇÃO DA DATABASE:
+
+CREATE DATABASE serra_junior_engenharia;
+
+USE serra_junior_engenharia;
+
+
+CRIAÇÃO DA TABELA FUNÇÕES:
+
+CREATE TABLE `serra_junior_engenharia`.`funcoes` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+CRIAÇÃO DA TABELA CURSOS:
+
+CREATE TABLE `serra_junior_engenharia`.`cursos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+
+
+CRIAÇÃO DA TABELA INTEGRANTES:
+
+CREATE TABLE `serra_junior_engenharia`.`integrantes` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
+  `cpf` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `cursos_id`
+    FOREIGN KEY (`id`)
+    REFERENCES `serra_junior_engenharia`.`cursos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `funcoes_id`
+    FOREIGN KEY (`id`)
+    REFERENCES `serra_junior_engenharia`.`funcoes` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+MOSTRAR A TABELA:
+SELECT * FROM serra_junior_engenharia.funcoes;
+SELECT * FROM serra_junior_engenharia.cursos;
+SELECT * FROM serra_junior_engenharia.integrantes;
+
+INSERIR O NOME DAS FUNÇÕES NA TABELA: 
+
+INSERT INTO funcoes (nome) VALUE ("Diretoria");
+INSERT INTO funcoes (nome) VALUE ("Assessoria");
+
+INSERIR O NOME DOS CURSOS:
+
+INSERT INTO cursos (nome) VALUE ("Computação");
+INSERT INTO cursos (nome) VALUE ("Mecânica");
+
+
+INSERIR O NOME E CPF NA TABELA INTEGRANTES:
+
+SET foreign_key_checks = 0;
+INSERT INTO integrantes (nome,cpf) VALUE ("Diogo", "132.465.798-10");
+INSERT INTO integrantes (nome,cpf) VALUE ("Hugo", "777.777.777-77");
+INSERT INTO integrantes (nome,cpf) VALUE ("Guilherme", "420.696.666-69");
+INSERT INTO integrantes (nome,cpf) VALUE ("Sérgio", "989.999.999-15");
