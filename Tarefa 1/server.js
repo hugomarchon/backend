@@ -1,12 +1,17 @@
 import express, { json } from "express";
+import knex from "knex"
+import {config} from "./knexfile.js";
 
+const connection = knex(config)
 const app = express();
 
 app.use(json());
 
-const PORT = 3003;
+const PORT = 3004;
 
-app.get("/gloriasol", (request, response) => {
+app.get("/gloriasol", async (request, response) => {
+  const xesquedele = await connection.raw("select * from tarefas;")
+  console.log(xesquedele)
   response.send("Glória ao Sol");
 });
 
